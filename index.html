@@ -8,15 +8,15 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
 
-    <title>Node-serialport by voodootikigod</title>
+    <title>Node SerialPort by voodootikigod</title>
   </head>
 
   <body>
 
     <header>
       <div class="container">
-        <h1>Node-serialport</h1>
-        <h2>Node.js package to access serial ports for reading and writing OR Welcome your robotic JavaScript overlords. Better yet, program them!</h2>
+        <h1>Node SerialPort</h1>
+        <h2>Welcome your robotic JavaScript overlords. Better yet, program them!</h2>
 
         <section id="downloads">
           <a href="https://github.com/voodootikigod/node-serialport/zipball/master" class="btn">Download as .zip</a>
@@ -28,37 +28,230 @@
 
     <div class="container">
       <section id="main_content">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <p><a href="https://travis-ci.org/voodootikigod/node-serialport"><img src="https://travis-ci.org/voodootikigod/node-serialport.png?branch=master" alt="Build Status"></a></p>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>Version: 1.2.4 - Released November 5, 2013</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<hr><p>Imagine a world where you can write JavaScript to control blenders, lights, security systems, or even robots. Yes, I said robots. That world is here and now with node-serialport. It provides a very simple interface to the low level serial port code necessary to program <a href="http://www.arduino.cc/">Arduino</a> chipsets, <a href="http://www.smarthome.com/manuals/protocol.txt">X10</a> wireless communications, or even the rising <a href="http://www.z-wave.com/modules/ZwaveStart/">Z-Wave</a> and <a href="http://www.zigbee.org/">Zigbee</a> standards. The physical world is your oyster with this goodie. For a full break down of why we made this, please read <a href="http://www.voodootikigod.com/nodebots-the-rise-of-js-robotics">NodeBots - The Rise of JS Robotics</a>.</p>
+
+<hr><h1>
+<a name="robots-you-say" class="anchor" href="#robots-you-say"><span class="octicon octicon-link"></span></a>Robots, you say?</h1>
+
+<p>This library is admittedly a base level toolkit for building amazing things with real world (including robots). Here are a couple of those amazing things that leverage node-serialport:</p>
+
+<ul>
+<li>
+<a href="https://github.com/jgautier/firmata">firmata</a> Talk natively to Arduino using the firmata protocol.</li>
+<li>
+<a href="http://tmpvar.com/project/tmpad/">tmpad</a> <a href="https://github.com/tmpvar/tmpad">source</a> - a DIY midi pad using infrared, arduino, and nodejs. <a href="http://vimeo.com/34575470">Video</a>
+</li>
+<li>
+<a href="https://github.com/ecto/duino">duino</a> - A higher level framework for working with Arduinos in node.js.</li>
+<li>
+<a href="http://jsconf.eu/2011/arduino_drinking_game_extravaganza.html">Arduino Drinking Game Extravaganza</a> - AKA "The Russian" a hexidecimal drinking game for geeks by Uxebu presented at JSConf EU 2011.</li>
+<li>
+<a href="https://gist.github.com/968773">Arduino controlling popcorn.js</a> - Controlling a popcorn.js video with an Arduino kit.</li>
+<li>
+<a href="http://jsconf.eu/2010/speaker/livingroombindmotion_function.html">Robotic JavaScript</a> - The first live presentation of the node-serialport code set as presented at JSConf EU 2010.</li>
+<li>
+<a href="https://github.com/adrai/devicestack">devicestack</a> - This module helps you to represent a device and its protocol.</li>
+<li>
+<a href="https://github.com/JayBeavers/Reflecta">reflecta</a> A communication protocol that combines Arduino Libraries and NodeJS into an integrated system.</li>
+</ul><p>For getting started with node-serialport, we recommend you begin with the following articles:</p>
+
+<ul>
+<li>
+<a href="http://nexxylove.tumblr.com/post/20159263403/arduino-node-security-sensor-hacking">Arduino Node Security Sensor Hacking</a> - A great all around "how do I use this" article.</li>
+<li>
+<a href="http://www.voodootikigod.com/nodebots-the-rise-of-js-robotics">NodeBots - The Rise of JS Robotics</a> - A survey article of why one would want to program robots in JS.</li>
+<li>
+<a href="https://github.com/rwldrn/johnny-five#setup-and-assemble-arduino">Johnny-Five Getting Started Guide</a> - Introduction to using the high level Johnny-Five library (awesome).</li>
+</ul><h1>
+<a name="how-to-use" class="anchor" href="#how-to-use"><span class="octicon octicon-link"></span></a>How To Use</h1>
+
+<p>Using node-serialport is pretty easy because it is pretty basic. It provides you with the building block to make great things, it is not a complete solution - just a cog in the (world domination) machine.</p>
+
+<h2>
+<a name="to-install" class="anchor" href="#to-install"><span class="octicon octicon-link"></span></a>To Install</h2>
+
+<p>This assumes you have everything on your system necessary to compile ANY native module for Node.js. This may not be the case, though, so please ensure the following are true for your system before filing an issue about "Does not install". For all operatings systems, please ensure you have Python 2.x installed AND not 3.0, node-gyp (what we use to compile) requires Python 2.x.</p>
+
+<h3>
+<a name="windows" class="anchor" href="#windows"><span class="octicon octicon-link"></span></a>Windows:</h3>
+
+<ul>
+<li>Install Windows 7 or Windows 8.</li>
+<li>Install <a href="http://www.microsoft.com/visualstudio/eng/2013-downloads#d-2013-express">Visual Studio Express 2013 Preview for Windows Desktop</a> or <a href="http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-windows-desktop">Visual Studio Express 2012 for Windows Desktop</a>.</li>
+<li>If you are hacking on an Arduino, be sure to install <a href="http://arduino.cc/en/Guide/windows#toc4">the drivers</a>.</li>
+<li>Install <a href="http://nodejs.org/">node.js 0.10.x</a> matching the bitness (32 or 64) of your operating system.</li>
+<li>Install <a href="http://www.python.org/download/releases/2.7.5/">Python 2.7.5</a> matching the bitness of your operating system.  For any questions, please refer to their <a href="http://docs.python.org/2/faq/windows.html">FAQ</a>. Default settings are perfect.</li>
+<li>Open the 'Visual Studio Command Prompt' and add Python to the path.  When installing serialport, you need to tell the build system (known as node-gyp) that you are using a newer compiler by using:</li>
+</ul><div class="highlight highlight-Batchfile"><pre>   <span class="k">set</span> <span class="nv">path</span><span class="o">=</span><span class="nv">%path%</span>;C:\Python<span class="m">27</span>
+   npm install serialport --msvs_version<span class="o">=</span><span class="m">2012</span>
+</pre></div>
+
+<p>This switch works for both Visual Studio Express 2012 and 2013.</p>
+
+<h3>
+<a name="mac-os-x" class="anchor" href="#mac-os-x"><span class="octicon octicon-link"></span></a>Mac OS X:</h3>
+
+<p>Ensure that you have at a minimum the xCode Command Line Tools installed appropriate for your system configuration. If you recently upgraded the OS, it probably removed your installation of Command Line Tools, please verify before submitting a ticket.</p>
+
+<h3>
+<a name="desktop-debianubuntu-linux" class="anchor" href="#desktop-debianubuntu-linux"><span class="octicon octicon-link"></span></a>Desktop (Debian/Ubuntu) Linux:</h3>
+
+<p>You know what you need for you system, basically your appropriate analog of build-essential. Keep rocking!</p>
+
+<pre><code>   sudo apt-get install build-essential
+   npm install serialport
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a name="raspberry-pi-linux" class="anchor" href="#raspberry-pi-linux"><span class="octicon octicon-link"></span></a>Raspberry Pi Linux:</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<ul>
+<li>Starting with a a vanilla New Out of the Box Software (NOOBS) Raspbian image (currently tested: 5/25/2013)</li>
+<li>Log into your Raspberry Pi through whatever means works best and ensure you are on a terminal prompt for the remaining steps. This could be local or through an SSH (or a serial connection if you like).</li>
+<li>Issue the following commands to ensure you are up to date:
+<code>
+sudo apt-get update
+sudo apt-get upgrade -y
+</code>
+</li>
+<li>Download and install node.js:
+<code>
+wget http://nodejs.org/dist/v0.10.12/node-v0.10.12-linux-arm-pi.tar.gz
+tar xvfz node-v0.10.12-linux-arm-pi.tar.gz
+sudo mv node-v0.10.12-linux-arm-pi /opt/node/
+</code>
+</li>
+<li>Set up your paths correctly:
+<code>
+echo 'export PATH="$PATH:/opt/node/bin"' &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</code>
+</li>
+<li>Install using npm, note this will take a while as it is actually compiling code and that ARM processor is getting a workout.
+<code>
+npm install serialport
+</code>
+</li>
+</ul><h2>
+<a name="to-use" class="anchor" href="#to-use"><span class="octicon octicon-link"></span></a>To Use</h2>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<p>Opening a serial port:</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">SerialPort</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"serialport"</span><span class="p">).</span><span class="nx">SerialPort</span>
+<span class="kd">var</span> <span class="nx">serialPort</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SerialPort</span><span class="p">(</span><span class="s2">"/dev/tty-usbserial1"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">baudrate</span><span class="o">:</span> <span class="mi">57600</span>
+<span class="p">});</span>
+</pre></div>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<p>When opening a serial port, you can specify (in this order).</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<ol>
+<li>Path to Serial Port - required.</li>
+<li>Options - optional and described below.</li>
+</ol><p>The options object allows you to pass named options to the serial port during initialization. The valid attributes for the options object are the following:</p>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<ul>
+<li>baudrate: Baud Rate, defaults to 9600. Must be one of: 115200, 57600, 38400, 19200, 9600, 4800, 2400, 1800, 1200, 600, 300, 200, 150, 134, 110, 75, or 50.</li>
+<li>databits: Data Bits, defaults to 8. Must be one of: 8, 7, 6, or 5.</li>
+<li>stopbits: Stop Bits, defaults to 1. Must be one of: 1 or 2.</li>
+<li>parity: Parity, defaults to 'none'. Must be one of: 'none', 'even', 'mark', 'odd', 'space'</li>
+<li>buffersize: Size of read buffer, defaults to 255. Must be an integer value.</li>
+<li>parser: The parser engine to use with read data, defaults to rawPacket strategy which just emits the raw buffer as a "data" event. Can be any function that accepts EventEmitter as first parameter and the raw buffer as the second parameter.</li>
+</ul><p><strong>Note, we have added support for either all lowercase OR camelcase of the options (thanks @jagautier), use whichever style you prefer.</strong></p>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<h2>
+<a name="open-event" class="anchor" href="#open-event"><span class="octicon octicon-link"></span></a>open event</h2>
+
+<p>You MUST wait for the open event to be emitted before reading/writing to the serial port. The open happens asynchronously so installing 'data' listeners and writing 
+before the open event might result in... nothing at all.</p>
+
+<p>Assuming you are connected to a serial console, you would for example:</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">serialPort</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"open"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'open'</span><span class="p">);</span>
+  <span class="nx">serialPort</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'data'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'data received: '</span> <span class="o">+</span> <span class="nx">data</span><span class="p">);</span>
+  <span class="p">});</span>  
+  <span class="nx">serialPort</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">"ls\n"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'err '</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'results '</span> <span class="o">+</span> <span class="nx">results</span><span class="p">);</span>
+  <span class="p">});</span>  
+<span class="p">});</span>
+</pre></div>
+
+<p>You can also call the open function, in this case instanciate the serialport with an additional flag.</p>
+
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">SerialPort</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"serialport"</span><span class="p">).</span><span class="nx">SerialPort</span>
+<span class="kd">var</span> <span class="nx">serialPort</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SerialPort</span><span class="p">(</span><span class="s2">"/dev/tty-usbserial1"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="nx">baudrate</span><span class="o">:</span> <span class="mi">57600</span>
+<span class="p">},</span> <span class="kc">false</span><span class="p">);</span> <span class="c1">// this is the openImmediately flag [default is true]</span>
+
+<span class="nx">serialPort</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'open'</span><span class="p">);</span>
+  <span class="nx">serialPort</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'data'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'data received: '</span> <span class="o">+</span> <span class="nx">data</span><span class="p">);</span>
+  <span class="p">});</span>  
+  <span class="nx">serialPort</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">"ls\n"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'err '</span> <span class="o">+</span> <span class="nx">err</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'results '</span> <span class="o">+</span> <span class="nx">results</span><span class="p">);</span>
+  <span class="p">});</span>  
+<span class="p">});</span>
+</pre></div>
+
+<h2>
+<a name="list-ports" class="anchor" href="#list-ports"><span class="octicon octicon-link"></span></a>List Ports</h2>
+
+<p>You can also list the ports along with some metadata as well.</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">serialport</span><span class="p">.</span><span class="nx">list</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">ports</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">ports</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">port</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">port</span><span class="p">.</span><span class="nx">comName</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">port</span><span class="p">.</span><span class="nx">pnpId</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">port</span><span class="p">.</span><span class="nx">manufacturer</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+
+<h2>
+<a name="parsers" class="anchor" href="#parsers"><span class="octicon octicon-link"></span></a>Parsers</h2>
+
+<p>Out of the box, node-serialport provides two parsers one that simply emits the raw buffer as a data event and the other which provides familiar "readline" style parsing. To use the readline parser, you must provide a delimiter as such:</p>
+
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">serialport</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"serialport"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">SerialPort</span> <span class="o">=</span> <span class="nx">serialport</span><span class="p">.</span><span class="nx">SerialPort</span><span class="p">;</span> <span class="c1">// localize object constructor</span>
+
+<span class="kd">var</span> <span class="nx">sp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SerialPort</span><span class="p">(</span><span class="s2">"/dev/tty-usbserial1"</span><span class="p">,</span> <span class="p">{</span> 
+  <span class="nx">parser</span><span class="o">:</span> <span class="nx">serialport</span><span class="p">.</span><span class="nx">parsers</span><span class="p">.</span><span class="nx">readline</span><span class="p">(</span><span class="s2">"\n"</span><span class="p">)</span> 
+<span class="p">});</span>
+</pre></div>
+
+<p>To use the raw parser, you just provide the function definition (or leave undefined):</p>
+
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">serialport</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"serialport"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">SerialPort</span> <span class="o">=</span> <span class="nx">serialport</span><span class="p">.</span><span class="nx">SerialPort</span><span class="p">;</span> <span class="c1">// localize object constructor</span>
+
+<span class="kd">var</span> <span class="nx">sp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SerialPort</span><span class="p">(</span><span class="s2">"/dev/tty-usbserial1"</span><span class="p">,</span> <span class="p">{</span> 
+  <span class="nx">parser</span><span class="o">:</span> <span class="nx">serialport</span><span class="p">.</span><span class="nx">parsers</span><span class="p">.</span><span class="nx">raw</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>You can get updates of new data from the Serial Port as follows:</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">serialPort</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"data"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">sys</span><span class="p">.</span><span class="nx">puts</span><span class="p">(</span><span class="s2">"here: "</span><span class="o">+</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+
+<p>You can write to the serial port by sending a string or buffer to the write method as follows:</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">serialPort</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s2">"OMG IT WORKS\r"</span><span class="p">);</span>
+</pre></div>
+
+<p>Enjoy and do cool things with this code.</p>
       </section>
     </div>
 
