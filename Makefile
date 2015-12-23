@@ -9,7 +9,7 @@ default:
 
 release:
 	@echo "Tagging release $(VERSION)"
-	@git tag -m "$(VERSION)" v$(VERSION)
+	@git tag -m "$(VERSION)" $(VERSION)
 
 	@echo "Pushing tags to GitHub"
 	@git push --tags
