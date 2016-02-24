@@ -44,7 +44,12 @@ void SerialportPoller::callCallback(int status) {
     argv[0] = Nan::Undefined();
   }
 
-  callback_->Call(1, argv);
+   if (callback_){
+      callback_->Call(1, argv);
+    }
+    else{
+      printf("callback_ has not been initialized");
+    }
 }
 
 
